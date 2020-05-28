@@ -1,6 +1,6 @@
 # Go Programming Course 2020 w22 - Project
 
-A RESTful API -server that shows information about medicines in JSON format.
+A RESTful API -server that shows information about oral liquid medicines in JSON format.
 How to use the program in your terminal (assuming you have [go](https://golang.org/)  and [git](https://git-scm.com/download/) installed):
 ```
 git clone https://github.com/marhyvar/go-server.git
@@ -9,6 +9,17 @@ go build server.go
 go run server.go
 ```
 Open your browser and go to: http://localhost:8080/
+
+## API Endpoints
+
+> Method | Url | Action
+> ------ | ------ | ------
+> GET | medicines | Get all medicines
+> GET | medicines/:id |  Get medicine by id
+> GET | groups/:id/medicines |  Get medicines by group id
+> POST | medicines | Add new medicine
+> PUT | medicines/:id | Edit medicine by id
+> DELETE | medicines/:id | Delete medicine by id
 
 This repository contains the final exercise (project work) for Tero Karvinen's Go Programming Course 2020.
 
