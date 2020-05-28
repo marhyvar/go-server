@@ -140,12 +140,12 @@ func updateMedicine(w http.ResponseWriter, r *http.Request) {
 func requestHandler() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", home)
-	router.HandleFunc("/meds", getAllMedicines).Methods("GET")
-	router.HandleFunc("/meds/{id}", getMedicine).Methods("GET")
-	router.HandleFunc("/meds", createMedicine).Methods("POST")
-	router.HandleFunc("/meds/{id}", deleteMedicine).Methods("DELETE")
-	router.HandleFunc("/meds/{id}", updateMedicine).Methods("PUT")
-	router.HandleFunc("/groups/{id}/meds", getByGroupId).Methods("GET")
+	router.HandleFunc("/medicines", getAllMedicines).Methods("GET")
+	router.HandleFunc("/medicines/{id}", getMedicine).Methods("GET")
+	router.HandleFunc("/medicines", createMedicine).Methods("POST")
+	router.HandleFunc("/medicines/{id}", deleteMedicine).Methods("DELETE")
+	router.HandleFunc("/medicines/{id}", updateMedicine).Methods("PUT")
+	router.HandleFunc("/groups/{id}/medicines", getByGroupId).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
