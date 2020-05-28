@@ -42,3 +42,5 @@ This repository contains also pre-built binaries for Mac, Linux and Windows. Thi
 [gorilla/mux](https://github.com/gorilla/mux)
 
 [Routing (using gorilla/mux)](https://gowebexamples.com/routes-using-gorilla-mux/)
+
+[Understanding Arrays and Slices in Go](https://www.digitalocean.com/community/tutorials/understanding-arrays-and-slices-in-go)
