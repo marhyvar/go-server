@@ -1,13 +1,19 @@
 # Go Programming Course 2020 w22 - Project
 
 A RESTful API -server that shows information about oral liquid medicines in JSON format.
-How to use the program in your terminal (assuming you have [go](https://golang.org/)  and [git](https://git-scm.com/download/) installed):
+In order to get the server running, [go](https://golang.org/) and [git](https://git-scm.com/download/) need to be installed.
+
+Clone the project:
 ```
 git clone https://github.com/marhyvar/go-server.git
+```
+Go to the go-server folder and run these commands to start the server:
+```
 cd go-server
 go build server.go
 go run server.go
 ```
+
 Open your browser and go to: http://localhost:8080/
 
 ## API Endpoints
@@ -21,7 +27,7 @@ Open your browser and go to: http://localhost:8080/
 > PUT | medicines/:id | Edit medicine by id
 > DELETE | medicines/:id | Delete medicine by id
 
-This repository contains the final exercise (project work) for Tero Karvinen's Go Programming Course 2020.
+This repository contains also pre-built binaries for Mac, Linux and Windows. This project is the final exercise for Tero Karvinen's Go Programming Course 2020.
 
 ## References
 
@@ -30,3 +36,7 @@ This repository contains the final exercise (project work) for Tero Karvinen's G
 [Creating a RESTful API With Golang](https://tutorialedge.net/golang/creating-restful-api-with-golang/)
 
 [Build a RESTful JSON API with Golang](https://medium.com/the-andela-way/build-a-restful-json-api-with-golang-85a83420c9da)
+
+[gorilla/mux](https://github.com/gorilla/mux)
+
+[Routing (using gorilla/mux)](https://gowebexamples.com/routes-using-gorilla-mux/)
