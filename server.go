@@ -67,12 +67,51 @@ func createMedicine(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(medicine)
 }
 
+func deleteMedicine(w http.ResponseWriter, r *http.Request) {
+    vars := mux.Vars(r)
+    id := vars["id"]
+
+    for index, medicine := range medGroup {
+        if medicine.Id == id {
+			//if id matches, removes the medicine from medGroup
+            medGroup = append(medGroup[:index], medGroup[index+1:]...)
+        }
+    }
+
+}
+
+func updateMedicine(w http.ResponseWriter, r *http.Request) {
+	id := mux.Vars(r)["id"]
+	var changedMedicine Medicine
+
+	reqBody, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Fprintf(w, "Something wrong with entered data")
+	}
+	json.Unmarshal(reqBody, &changedMedicine)
+
+	for index, medicine := range medGroup {
+		if medicine.Id == id {
+			medicine.Name = changedMedicine.Name
+			medicine.CommercialName = changedMedicine.CommercialName
+			medicine.Concentration = changedMedicine.Concentration
+			medicine.Volume = changedMedicine.Volume
+			medicine.Dosage = changedMedicine.Dosage
+			// if id matches, updates medGroup[index] with new value
+			medGroup = append(medGroup[:index], medicine)
+			json.NewEncoder(w).Encode(medicine)
+		}
+	}
+}
+
 func requestHandler() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", home)
 	router.HandleFunc("/meds", getAllMedicines).Methods("GET")
 	router.HandleFunc("/meds/{id}", getMedicine).Methods("GET")
 	router.HandleFunc("/meds", createMedicine).Methods("POST")
+	router.HandleFunc("/meds/{id}", deleteMedicine).Methods("DELETE")
+	router.HandleFunc("/meds/{id}", updateMedicine).Methods("PUT")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
