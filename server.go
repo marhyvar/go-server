@@ -16,6 +16,7 @@ type Medicine struct {
 	Concentration float64 `json:"Concentration"`
 	Volume int `json:"Volume"`
 	Dosage float64 `json:"Dosage"`
+	GroupId string `json:"GroupId"`
 }
 
 type GroupMedicines []Medicine
@@ -28,6 +29,7 @@ var medGroup = GroupMedicines{
 		Concentration: 100.0,
 		Volume: 50,
 		Dosage: 50.0,
+		GroupId: "1",
 	},
 	{
 		Id: "2",
@@ -36,6 +38,25 @@ var medGroup = GroupMedicines{
 		Concentration: 50.0,
 		Volume: 100,
 		Dosage: 50.0,
+		GroupId: "1",
+	},
+	{
+		Id: "3",
+		Name: "amoksisilliini",
+		CommercialName: "Amorion",
+		Concentration: 100.0,
+		Volume: 30,
+		Dosage: 40.0,
+		GroupId: "2",
+	},
+	{
+		Id: "4",
+		Name: "amoksisilliini",
+		CommercialName: "Amorion",
+		Concentration: 100.0,
+		Volume: 50,
+		Dosage: 40.0,
+		GroupId: "2",
 	},
 }
 
@@ -80,6 +101,17 @@ func deleteMedicine(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func getByGroupId(w http.ResponseWriter, r *http.Request) {
+	groupId := mux.Vars(r)["id"]
+	var group []Medicine
+	for _, med := range medGroup {
+		if med.GroupId == groupId {
+			group = append(group, med)
+		}
+	}
+	json.NewEncoder(w).Encode(group)
+}
+
 func updateMedicine(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 	var changedMedicine Medicine
@@ -97,6 +129,7 @@ func updateMedicine(w http.ResponseWriter, r *http.Request) {
 			medicine.Concentration = changedMedicine.Concentration
 			medicine.Volume = changedMedicine.Volume
 			medicine.Dosage = changedMedicine.Dosage
+			medicine.GroupId = changedMedicine.GroupId
 			// if id matches, updates medGroup[index] with new value
 			medGroup = append(medGroup[:index], medicine)
 			json.NewEncoder(w).Encode(medicine)
@@ -112,6 +145,7 @@ func requestHandler() {
 	router.HandleFunc("/meds", createMedicine).Methods("POST")
 	router.HandleFunc("/meds/{id}", deleteMedicine).Methods("DELETE")
 	router.HandleFunc("/meds/{id}", updateMedicine).Methods("PUT")
+	router.HandleFunc("/groups/{id}/meds", getByGroupId).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
