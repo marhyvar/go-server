@@ -27,6 +27,8 @@ Open your browser and go to: http://localhost:8080/
 > PUT | medicines/:id | Edit medicine by id
 > DELETE | medicines/:id | Delete medicine by id
 
+![endpoint example](endpoint_example.png)
+
 This repository contains also pre-built binaries for Mac, Linux and Windows. This project is the final exercise for Tero Karvinen's Go Programming Course 2020.
 
 ## References
