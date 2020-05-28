@@ -5,10 +5,11 @@ import (
 	"log"
 	"net/http"
 	"encoding/json"
+	"io/ioutil"
 	"github.com/gorilla/mux"
 )
 
-type medicine struct {
+type Medicine struct {
 	Id string `json:"Id"`
 	Name string `json:"Name"`
 	CommercialName string `json:"CommercialName"`
@@ -17,9 +18,9 @@ type medicine struct {
 	Dosage float64 `json:"Dosage"`
 }
 
-type groupMedicines []medicine
+type GroupMedicines []Medicine
 
-var medGroup = groupMedicines{
+var medGroup = GroupMedicines{
 	{
 		Id: "1",
 		Name: "kefaleksiini",
@@ -56,11 +57,22 @@ func getAllMedicines(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(medGroup)
 }
 
+func createMedicine(w http.ResponseWriter, r *http.Request) {    
+    reqBody, _ := ioutil.ReadAll(r.Body)
+    var medicine Medicine 
+    json.Unmarshal(reqBody, &medicine)
+
+    medGroup = append(medGroup, medicine)
+
+    json.NewEncoder(w).Encode(medicine)
+}
+
 func requestHandler() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", home)
 	router.HandleFunc("/meds", getAllMedicines).Methods("GET")
 	router.HandleFunc("/meds/{id}", getMedicine).Methods("GET")
+	router.HandleFunc("/meds", createMedicine).Methods("POST")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
