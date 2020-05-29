@@ -10,7 +10,6 @@ git clone https://github.com/marhyvar/go-server.git
 Go to the go-server folder and run these commands to start the server:
 ```
 cd go-server
-go build server.go
 go run server.go
 ```
 
@@ -44,3 +43,5 @@ This repository contains also pre-built binaries for Mac, Linux and Windows. Thi
 [Routing (using gorilla/mux)](https://gowebexamples.com/routes-using-gorilla-mux/)
 
 [Understanding Arrays and Slices in Go](https://www.digitalocean.com/community/tutorials/understanding-arrays-and-slices-in-go)
+
+[Go by Example - Http-servers](https://gobyexample.com/http-servers)
