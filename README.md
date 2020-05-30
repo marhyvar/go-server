@@ -7,6 +7,10 @@ Clone the project:
 ```
 git clone https://github.com/marhyvar/go-server.git
 ```
+Install gorilla/mux:
+```
+go get -u github.com/gorilla/mux
+```
 Go to the go-server folder and run these commands to start the server:
 ```
 cd go-server

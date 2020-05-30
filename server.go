@@ -7,6 +7,8 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"github.com/gorilla/mux"
+	// Copyright (c) 2012-2018 The Gorilla Authors. All rights reserved.
+	// 05/28/2020 gorilla/mux is licensed under the BSD 3-Clause "New" or "Revised" License
 )
 
 type Medicine struct {
