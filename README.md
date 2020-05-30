@@ -24,11 +24,11 @@ Open your browser and go to: http://localhost:8080/
 > Method | Url | Action
 > ------ | ------ | ------
 > GET | medicines | Get all medicines
-> GET | medicines/:id |  Get medicine by id
-> GET | groups/:id/medicines |  Get medicines by group id
+> GET | medicines/:vnr |  Get medicine by vnr
+> GET | groups/:atc/medicines |  Get medicines by atc code
 > POST | medicines | Add new medicine
-> PUT | medicines/:id | Edit medicine by id
-> DELETE | medicines/:id | Delete medicine by id
+> PUT | medicines/:vnr | Edit medicine by vnr
+> DELETE | medicines/:vnr | Delete medicine by vnr
 
 ![endpoint example](endpoint_example.png)
 
