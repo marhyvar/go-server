@@ -76,7 +76,10 @@ func getAllMedicines(w http.ResponseWriter, r *http.Request) {
 }
 
 func createMedicine(w http.ResponseWriter, r *http.Request) {    
-    reqBody, _ := ioutil.ReadAll(r.Body)
+	reqBody, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Fprintf(w, "Something wrong with entered data")
+	}
     var medicine Medicine 
     json.Unmarshal(reqBody, &medicine)
 
