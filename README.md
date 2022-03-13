@@ -7,14 +7,17 @@ Clone the project:
 ```
 git clone https://github.com/marhyvar/go-server.git
 ```
-Install gorilla/mux:
-```
-go get -u github.com/gorilla/mux
-```
-Go to the go-server folder and run these commands to start the server:
+Build Go binaries:
 ```
 cd go-server
-go run server.go
+go build
+```
+Start the server:
+```
+# On Mac or Linux:
+./server
+# On Windows:
+server.exe
 ```
 
 Open your browser and go to: http://localhost:8080/
@@ -49,3 +52,5 @@ This repository contains also pre-built binaries for Mac, Linux and Windows. Thi
 [Understanding Arrays and Slices in Go](https://www.digitalocean.com/community/tutorials/understanding-arrays-and-slices-in-go)
 
 [Go by Example - Http-servers](https://gobyexample.com/http-servers)
+
+[How To Build and Install Go Programs](https://www.digitalocean.com/community/tutorials/how-to-build-and-install-go-programs)
